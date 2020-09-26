@@ -1,0 +1,11 @@
+<nav class="pagination section">
+	<div class="nav">
+		{{#if prev}}
+			<a class="prev button red" href="{{page_url prev}}">{{t "Previous" }}</a>
+		{{/if}}
+		<span class="page-number">{{t "Page" }} {{page}} {{t "of"}} {{pages}}</span>
+		{{#if next}}
+			<a class="next button red" href="{{page_url next}}">{{t "Next" }}</a>
+		{{/if}}
+	</div>
+</nav>

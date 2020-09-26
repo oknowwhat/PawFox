@@ -1,0 +1,81 @@
+{{!< default}}
+
+{{#post}}
+
+<!-- start: #page -->
+<main id="page" class="main grid-container">
+	
+    <!-- start: .center -->
+    <div id="single" class="account-page center content fullcover no-sidebar" data-aos="fade">
+        
+        <div class="content bg-white">
+        
+            <!-- start: .left-content -->
+            <div class="left-content content np-mobile" style="padding-right: 0;">
+                <article class="{{post_class}}">
+                
+                    <section class="post-content">
+                        <h1 class="title ularge bold bordered">{{title}}</h1>
+                        <!-- start: .row -->
+                        <div class="row">
+                            
+
+                            {{#foreach @member.subscriptions}}
+                                <div class="subscription grid-50">
+                                    {{#if cancel_at_period_end}}
+                                        <p class="description">
+                                            <strong class="subscription-expiration-warning">{{t "Your subscription will expire on {expire_date}" expire_date=(date current_period_end format="DD MMM YYYY") }}.</strong> {{t "If you change your mind in the mean time you can turn auto-renew back on to continue your subscription."}}
+                                        </p>
+                                    {{else}}
+                                        <p class="description">
+                                            {{t "Hey! You have an active account with access to all Areas. Get in touch if have any problems or need some help getting things updated, and thanks for subscribing."}}
+                                        </p>
+                                    {{/if}}
+                                    <div class="subscriber-details">
+                                        <div class="subscriber-detail">
+                                            <label class="subscriber-detail-label">{{t "Email address"}}</label>
+                                            <span class="subscriber-detail-content">{{@member.email}}</span>
+                                        </div>
+                                        <div class="subscriber-detail">
+                                            <label class="subscriber-detail-label">{{t "Your plan"}}</label>
+                                            <span class="subscriber-detail-content">$<span class="plan-price" data-value="{{plan.amount}}">0</span>/{{plan.interval}}</span>
+                                        </div>
+                                        <div class="subscriber-detail">
+                                            <label class="subscriber-detail-label">{{t "Card"}}</label>
+                                            <span class="subscriber-detail-content">**** **** **** {{default_payment_card_last4}}</span>
+                                        </div>
+                                        <div class="subscriber-detail">
+                                            <label class="subscriber-detail-label">
+                                                {{#if cancel_at_period_end}}
+                                                    {{t "Expires"}}
+                                                {{else}}
+                                                    {{t "Next bill date"}}
+                                                {{/if}}
+                                            </label>
+                                            <span class="subscriber-detail-content">{{date current_period_end format="DD MMM YYYY"}}</span>
+                                        </div>                                    
+                                    </div>
+                                    {{cancel_link class="cancel-link button dark" cancelLabel=(t "Cancel subscription") continueLabel=(t "Continue subscription") }}
+                                </div>
+                            {{/foreach}}                 
+
+                        </div>
+                        <!-- end: .row -->
+                        <div class="clear"></div>
+                    </section>
+                    
+                </article>
+            </div>
+            <!-- end: .content -->
+            
+            <div class="clear"></div>
+
+        </div>
+    
+    </div>
+    <!-- end: .center -->
+    
+</main>
+<!-- end: #page -->
+
+{{/post}}

@@ -1,0 +1,71 @@
+
+<article class="default post-access-{{visibility}} index-{{@index}} grid-33 tablet-grid-50 mobile-grid-100 np-mobile {{#if @rowStart}}first-row{{/if}} {{post_class}}">
+    <div class="article-wrapper">
+        <header>
+            {{#if feature_image}}
+                <div class="post-format-wrapper">
+                    <div class="featured-image">
+                        <a href="{{url}}" class="thumb hover-effect">
+                            <span class="fullimage cover lazy" data-src="{{ img_url feature_image size="loop" }}"></span>
+                            <!--<span class="fullimage cover lazy" data-src="{{feature_image}}"></span>-->
+                        </a>
+                        {{#primary_tag}}
+                            <div class="tags absolute">
+                                <a href="{{url}}" class="ctag ctag-{{slug}}" data-id="ctag-{{slug}}">{{name}}</a>
+                            </div>
+                        {{/primary_tag}}
+                    </div>
+                </div>
+            {{/if}}
+            <div class="meta">
+
+                {{!-- <svg><use xlink:href="#calendar"></use></svg> --}}
+                <time datetime="{{date format='YYYY-MM-DD'}}"><svg><use xlink:href="#calendar"></use></svg> {{date format="MMMM DD, YYYY"}}</time>            
+
+                <div class="clear"></div>
+            </div>
+            <h1 class="title main-title gradient-effect"><a href="{{url}}">{{{title}}}</a></h1>
+        </header>
+        <div class="post-excerpt">
+            {{excerpt words="17"}}...
+            <div class="clear"></div>
+        </div>
+        {{#if authors}}
+
+        <footer class="author-meta">
+            <!--<h5 class="title usmall" style="display: inline-block; vertical-align: baseline; margin-top: 10px;">By:</h5>-->
+            {{#foreach authors limit="1" }}
+                <a href="{{url}}" class="author" title="{{name}}">
+                    {{#if profile_image}}
+                        <span class="author-image cover" style="background-image: url( {{img_url profile_image size="avatar_thumb"}} );"></span>
+                    {{/if}}
+                    <span class="author-name">{{name}}</span>
+                </a>
+            {{/foreach}}
+            {{#if @labs.members}}
+                {{!-- <a href="{{url}}" class="access-icon visibility-public comments meta-info alignright tooltip" title="{{t "Public Article"}}">         
+                    <svg><use xlink:href="#unlocked"></use></svg>
+                </a> --}}
+                <a href="{{url}}" class="access-icon visibility-members comments meta-info alignright tooltip" title="{{t "Members Article"}}">       <svg><use xlink:href="#locked"></use></svg>                
+                </a>
+                <a href="{{url}}" class="access-icon visibility-paid comments meta-info alignright tooltip" title="{{t "Paid Article"}}">         
+                    <svg><use xlink:href="#vip"></use></svg>     
+                </a>
+            {{/if}}
+            <a href="{{url}}#comments" class="comments meta-info alignright"><span class="disqus-comment-count" data-disqus-url="{{@site.url}}{{url}}" data-disqus-identifier="{{comment_id}}">0</span> <svg><use xlink:href="#comments-icon"></use></svg></a>
+            <div class="clear"></div>
+        </footer>
+        {{/if}}
+        <div class="border"></div>        
+    </div>
+</article>
+
+{{#if @rowEnd}}
+	<div class="clear hide-on-tablet"></div>
+	<div class="separator hide-on-tablet hide-on-mobile"></div>
+{{/if}}
+
+{{#if @last}}
+	<div class="clear"></div>
+	<div class="separator last hide-on-tablet hide-on-mobile"></div>
+{{/if}}

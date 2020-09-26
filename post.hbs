@@ -1,0 +1,238 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{#post}}
+
+<!-- start: #single -->
+<main id="single" class="main grid-container {{#has tag='fullcover'}}fullcover{{else}}standard{{/has}}" data-aos="fade">
+
+    {{#if feature_image}}
+        {{#has tag="fullcover"}}
+        
+            <div class="featured-image cover content" style="background: url({{img_url feature_image size="single_fullcover"}});">
+                <!-- start: .meta -->
+                <div class="meta top">
+                    <time class="meta-info" datetime="{{date format="YYYY-MM-DD"}}"><svg><use xlink:href="#calendar"></use></svg> {{date format="MMMM DD, YYYY"}}</time>                                
+                    <a href="#comments" class="comments meta-info"><svg><use xlink:href="#comments-icon"></use></svg> <span class="disqus-comment-count" data-disqus-url="{{@site.url}}{{url}}" data-disqus-identifier="{{comment_id}}">0</span></a>   
+                </div>
+                <!-- end: .meta -->
+                <div class="info">
+                    {{#if tags}}
+                        <div class="tags">
+                            {{#foreach tags}}
+                                <a href="{{url}}" class="ctag ctag-{{slug}}" data-id="ctag-{{slug}}">{{name}}</a>
+                            {{/foreach}}
+                        </div>
+                    {{/if}}
+                    <h1 class="title ularge white bold">{{title}}</h1>
+                </div>
+            </div>
+
+        {{/has}}
+    {{/if}}
+
+    <!-- start: .center -->
+    <div class="center content">
+
+        <!-- start: .content -->
+        <div class="left-content grid-70 np-mobile">
+
+            <article class="main-article post-access-{{visibility}} {{post_class}}">
+
+                {{^has tag="fullcover"}}
+                    <header>
+
+                        {{#if feature_image}}
+                            <div class="featured-image">
+                                <img class="lazy" src="{{asset 'images/transparent.gif' }}" data-src="{{img_url feature_image size="single_standard"}}" alt="{{title}}">
+                                {{#if tags}}
+                                    <div class="tags absolute hide-on-mobile">
+                                        {{#foreach tags}}
+                                            <a href="{{url}}" class="ctag ctag-{{slug}}" data-id="ctag-{{slug}}">{{name}}</a>
+                                        {{/foreach}}
+                                    </div>
+                                {{/if}}
+                            </div>
+                        {{/if}}
+
+                        <!-- start: .meta -->
+                        <div class="meta">
+                            {{#primary_author}}
+                                <a href="{{url}}" class="author meta-info hide-on-mobile" title="{{name}}">                                        
+                                    {{#if profile_image}}
+                                        <span class="author-image cover" style="background-image: url( {{profile_image}} );"></span>
+                                    {{/if}}
+                                    <span class="author-name">{{t "By"}} {{name}}</span>
+                                </a>
+                            {{/primary_author}}                              
+                            <time class="meta-info" datetime="{{date format="YYYY-MM-DD"}}"><svg><use xlink:href="#calendar"></use></svg> {{date format="MMMM DD, YYYY"}}</time>
+                            
+                            <a href="#comments" class="comments meta-info"><svg><use xlink:href="#comments-icon"></use></svg> <span class="disqus-comment-count" data-disqus-url="{{@site.url}}{{url}}" data-disqus-identifier="{{comment_id}}">0</span></a>     
+
+                            <div class="clear"></div>
+
+                            <h1 class="title no-thumb large bold">{{title}}</h1>
+                        </div>
+                        <!-- end: .meta -->
+
+                        <div class="clear"></div>
+
+                    </header>
+                {{/has}}
+
+                <section class="post-content">
+
+                    {{#if access}}
+                        <div class="text">{{content}}</div>
+                    {{else}}
+                        <div class="text">{{excerpt}}..</div>
+                        <div class="section np-bottom">
+                            <div class="subscribe-cta visibility-paid">
+                                <h3 class="title">{{t "This article is for paid members only"}}</h3>
+                                <p>{{t "To continue reading this article, uppgrade your account to get full access."}}</p>
+                                <a href="{{@site.url}}/membership" class="button red">{{t "Sign Up"}} <i class="fa fa-paper-plane"></i></a>
+                            </div>
+                            <div class="subscribe-cta visibility-members">
+                                <h3 class="title">{{t "This article is for subscribers only"}}</h3>
+                                <p>{{t "To continue reading this article, just register your email and we will send you access."}}</p>
+                                <a href="{{@site.url}}/subscribe" class="button red">{{t "Subscribe"}} <i class="fa fa-paper-plane"></i></a>
+                            </div>
+                        </div>
+                    {{/if}}                   
+
+                    <!-- start: .share-buttons -->
+                        <div class="share-buttons section">
+                        <h5 class="title small">{{t "Share Article:"}}</h5>
+                            <a class="whatsapp button circle hide-on-tablet hide-on-desktop" href="whatsapp://send?text={{url absolute="true"}}" data-action="share/whatsapp/share"><i class="fa fa-whatsapp"></i></a>
+                            <a class="facebook button circle" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><i class="fa fa-facebook"></i></a>
+                            <a class="twitter button circle" href="http://twitter.com/share?text={{encode title}}&url={{url absolute="true"}}"
+                        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="fa fa-twitter"></i></a>
+                            <a href="mailto:?subject={{encode title}}&body={{url absolute="true"}}" class="email button circle" target="_blank"><i class="fa fa-envelope"></i></a>
+                        <div class="clear"></div>
+                        <div class="permalink">
+                            <input type="text" name="shortlink" value="{{url absolute="true" }}" id="copy-link" readonly>
+                            <span class="copy"><svg><use xlink:href="#copy"></use></svg></span>
+                        </div>
+                    </div>
+                    <!-- end: .share-buttons -->
+
+                </section>
+
+            </article>
+            <div class="clear"></div>
+
+            {{#primary_author}}
+                <!-- start: .author -->
+                <section id="author" class="author section {{#if profile_image}} with-avatar{{else}} no-avatar{{/if}}">
+                    <!--<h3 class="title bordered">About the Author</h3>-->
+                    <div class="avatar">
+                        {{#if profile_image}}
+                            <a href="{{url}}" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url( {{profile_image}} );"></span></a>
+                        {{/if}}
+                    </div>
+                    <div class="info">
+                        <h4 class="title author-name gradient-effect"><a href="{{url}}">{{name}}</a></h4>
+                        <p>{{bio}}</p>
+                        <div class="social">
+                            {{#if location}}
+                                <a href="javascript:void(0)" class="location tooltip" title="{{t 'Location' }}: {{location}}" target="_blank"><i class="fa fa-map-marker"></i></a>
+                            {{/if}}
+                            {{#if website}}
+                                <a href="{{website}}" class="website tooltip" title="{{t 'Website' }}: {{website}}" target="_blank"><i class="fa fa-globe"></i></a>
+                            {{/if}}
+                            {{#if twitter}}
+                                <a href="{{twitter_url}}" class="twitter tooltip" title="{{t 'Follow me on Twitter' }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                            {{/if}}
+                            {{#if facebook}}
+                                <a href="{{facebook_url}}" class="facebook tooltip" title="{{t 'Follow me on Facebook' }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </section>
+                <!-- end: .author -->
+            {{/primary_author}}
+
+            <section class="related section">
+                {{#prev_post}}
+                    <article class="prev grid-50 tablet-grid-50 grid-parent">
+                        {{#if feature_image}}
+                            <div class="thumb cover lazy" data-src="{{img_url feature_image size="single_related"}}"></div>
+                        {{/if}}
+                        <a href="{{url}}" class="full-link"></a>
+                        <div class="info">
+                            <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                            <h4 class="title white no-margin">{{title}}</h4>
+                        </div>
+                        <span class="button"><img src="{{ asset "images/left-arrow.svg" }}" width="15"></span>
+                        <div class="overlay"></div>
+                    </article>
+                {{/prev_post}}
+
+                {{#next_post}}
+                    <article class="next grid-50 tablet-grid-50 grid-parent">
+                        {{#if feature_image}}
+                            <div class="thumb cover lazy" data-src="{{img_url feature_image size="single_related"}}"></div>
+                        {{/if}}
+                        <a href="{{url}}" class="full-link"></a>
+                        <div class="info">
+                            <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                            <h4 class="title white no-margin">{{title}}</h4>
+                        </div>
+                        <span class="button"><img src="{{ asset "images/right-arrow.svg" }}" width="15"></span>
+                        <div class="overlay"></div>
+                    </article>
+                {{/next_post}}
+                <div class="clear"></div>
+            </section>
+
+            <div class="clear"></div>
+
+            <!-- start: disqus integration -->
+            <div id="comments" class="section bg-white">
+                <h3 class="title bordered">{{t "Comments" }}</h3>
+                <div id="disqus_thread"></div>
+            </div>
+
+            <script>
+                /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                    */
+                var disqus_shortname = theme_config.disqus_shortname; // required: replace example with your forum shortname
+                var disqus_config = function () {
+                    this.page.url = '{{@site.url}}{{url}}';  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = '{{comment_id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+
+                (function() {  // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+
+                    s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+            <!-- end: disqus integration -->
+
+            <div class="clear"></div>
+        </div>
+        <!-- end: .content -->
+
+        {{> sidebar }}
+
+        <div class="clear"></div>
+
+    </div>
+    <!-- end: .center -->
+
+</main>
+<!-- end: #single -->
+
+{{/post}}

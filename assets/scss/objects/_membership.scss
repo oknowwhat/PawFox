@@ -1,0 +1,251 @@
+/* @group Global: Membership */
+
+.access-icon{
+    display: none;
+}
+.post-access-public{
+    .visibility-public{ display: block; }
+}
+.post-access-members{
+    .visibility-members{ display: block; }
+}
+.post-access-paid{
+    .visibility-paid{ display: block; }
+}
+
+.subscribe-cta{
+    display: none;
+    background: $border-color;
+    // color: #fff;
+    padding: 50px;
+    text-align: center;
+    border-radius: $border-radius-sections;
+    color: $light-gray;
+    .title{
+        margin-bottom: 10px;
+    }
+    .button{
+        margin-top: 25px;
+    }
+}
+
+.subscribe-form{
+    .submit{
+        i{
+            font-size: 100%;
+        }
+        svg{
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin-top: -3px;
+            margin-left: 5px;
+        }
+    }
+    .error-detail{
+        height: 0;
+        opacity: 0;
+        padding: 0;
+        @include transition;
+    }
+    .success-message{
+        opacity: 0;
+        padding: 0;
+        height: 0;
+        @include transition;
+        i{
+            font-size: 120%;
+            margin-left: 5px;
+            
+        }
+    }
+    &.success{
+        .success-message{
+            height: auto;
+            opacity: 1;
+            margin-bottom: 15px;
+            i{
+                animation: shake 1.25s linear;
+            }
+        }
+    }
+    &.error{
+        .error-detail{
+            height: auto;
+            opacity: 1;
+            margin-bottom: 15px;
+        }
+    }
+    &.loading{
+        .submit{
+            // cursor: not-allowed;
+            pointer-events: none;
+            i, svg{ display: none; }
+            &:after{
+                margin-left: 5px;
+                content: "";
+                display: inline-block;
+                vertical-align: middle;
+                top: -2px;
+                position: relative;
+                height: 12px;
+                width: 12px;
+                border: 2px solid #fff;
+                border-radius: 100%;
+                border-right-color: transparent;
+                border-top-color: transparent;
+                animation: spin .5s infinite linear;
+            }
+        }
+    }
+}
+
+// Membership plans
+.membership-page{
+    div.left-content article{
+        background: none;
+        box-shadow: none;
+        padding: 40px 0;
+    }
+    .subscribe-plan{
+        background: #fff;
+        // color: #fff;
+        padding: 0 50px 50px;
+        text-align: center;
+        border-radius: $border-radius-sections;
+        color: $light-gray;
+        margin-bottom: 35px;
+        .icon{
+            svg{
+                width: 50px;
+                height: 50px;
+                fill: $red;
+                margin-top: -40px;
+                background: #fff;
+                border-radius: 50%;
+                padding: 20px;
+                // box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.15);
+                margin-bottom: 10px;
+            }
+        }
+        .title{
+            margin-bottom: 10px;
+        }
+        .button{
+            margin-top: 25px;
+        }
+        ul li{
+            border-top: 1px solid $border-color;
+            padding: 15px 0;
+            // &:last-child{ border: 0; }
+        }
+        .cost{
+            font-weight: bold;
+            font-size: 34px;
+            margin-bottom: 15px;
+            color: $red;
+            span{
+                display: inline-block;
+                font-size: 60%;
+                vertical-align: middle;
+                margin-top: -3px;
+            }
+        }
+        &.monthly{
+            .cost{ color: $green; }
+            .icon svg{ fill: $green; }
+        }  
+        &.yearly{
+            .cost{ color: $text-color; }
+            .icon svg{ fill: $text-color; }
+        }     
+        .button{
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+            padding: 8px 15px;
+        }     
+    }
+    .account{
+        color: #fff;
+        margin-top: 20px;
+        .button{ margin-left: 10px; }
+    }
+}
+
+// Account page
+.account-page{
+    .content{ margin-top: 0; }
+    div.left-content article{
+        box-shadow: none;
+        // padding-top: 0;
+        // padding-bottom: 0;
+    }
+    .row{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .subscription{
+        text-align: center;
+        font-size: 13px;
+        margin-bottom: 25px;
+        .subscriber-detail{
+            
+            border-top: 1px solid $border-color;
+            padding: 10px;
+            text-align: left;
+            label{
+                display: inline-block;
+                font-weight: 500;
+                margin-right: 10px;
+                min-width: 120px;
+            }
+        }
+        .description{
+            font-size: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .button{
+            margin-top: 15px;
+        }
+        .gh-error{
+            display: block;
+            margin-top: 10px;
+            color: $light-gray;
+        }
+    }
+}
+
+
+// Animations
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+}
+
+/* @end */

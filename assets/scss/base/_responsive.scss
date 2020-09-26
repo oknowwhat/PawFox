@@ -1,0 +1,555 @@
+/* CSS Document */
+
+/* Small Desktops */
+
+@media screen and (max-width: 1200px){
+
+    .hide-on-desktop-sm{ display: none !important; }
+	body{ min-width: inherit; }
+	img{ max-width: 100%; height: auto; }
+	.grid-container{ padding-left: 40px; padding-right: 40px; }
+
+	#header{
+        .logo{ float: none; margin: 10px auto; }
+        nav{
+            float: none;
+            text-align: center;
+        }
+        .subscribe.button{ margin-top: 10px; }
+    }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px){
+
+
+}
+
+/* All Mobile Devices */
+
+@media screen and (max-width: 980px){
+
+	/* @group Global Styles */
+
+    .content{ margin-top: 30px; }
+    div.left-content{ padding-right: 0; }
+    .no-sidebar .default-sidebar{ display: none !important; }
+	// .sticky-wrapper{ height: auto !important; }
+	.one-sidebar .left-content{ width: auto; }
+	.title{
+		font-size: 20px;
+		&.ularge{ font-size: 34px;  }
+		&.large{ font-size: 28px; }
+		&.medium{ font-size: 24px; }
+		&.small{ font-size: 16px; }
+		&.usmall{ font-size: 13px; }
+	}
+
+    div.left-content{ margin: 0; border: 0; }
+    aside, aside:before{ border: 0; }
+    aside .widget_search{
+        margin: 0 !important;
+        background: none;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+	/* @end */
+    
+    /* @group Articles */
+
+    div.articles{
+        // article{ border-bottom: 1px solid #ddd; }
+        &.classic{
+            article{
+                h4.title{ font-size: 24px; margin-bottom: 0; }
+                div.meta{ margin-top: 10px; }
+                .post-excerpt{ font-size: 13px; }
+                .right{ padding-left: inherit; }
+                &.no-thumb .bottom{ margin-top: 0px; }
+            }   
+        }
+    }
+    
+    /* @end */
+
+	/* @group Header */
+
+	#header{
+		position: relative;
+		.logo{ max-width: 60%; }
+		div.menu-mobile{
+			display: block;
+			position: absolute;
+			left: 40px;
+			top: 50%;
+			font-size: 30px;
+			color: #fff;
+			cursor: pointer;
+			transform: translateY(-50%);
+			z-index: 200;
+            @include transition;
+            i{ 
+                vertical-align: middle;
+            }
+        }
+        &.menu-open div.menu-mobile i:before{
+            content: '\f00d';
+        }
+		nav{
+			position: absolute;
+			left: 40px;
+			top: 90%;
+			background: #fff;
+			margin: 0;
+			opacity: 0;
+			visibility: hidden;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 5px 15px 0px rgba(#000, 0.15);
+            float: none;
+            text-align: left;
+            @include transition;
+            
+            ul.menu > li{ 
+                display: block;
+                padding: 5px 20px; 
+                &.menu-item-has-children:after{
+                    font-family: 'FontAwesome';
+                    content: '\f105';
+                    display: block;
+                    color: $text-color;
+                    position: absolute;
+                    font-size: 16px;
+                    right: 0;
+                    top: 6px;
+                    z-index: 5;
+                }
+            }
+			ul.menu > li > a{ padding: 5px 0; color: $text-color; }
+            ul.menu > li a:before{ display: none; }
+            ul.sub-menu{
+                left: 100%;
+                top: 0;
+                min-width: 150px;
+                max-width: 300px;
+            }
+		}
+		&.menu-open nav{
+			opacity: 1;
+			visibility: visible;
+			top: 100%;
+        }
+        div.menu-wrapper{ padding-bottom: 10px; padding-top: 15px; }
+        // Header styles
+        &.advertising{
+            .logo{ float: none; }
+        }
+	}
+
+	/* @end */
+
+}
+
+/* Tablets */
+
+@media screen and (min-width: 768px) and (max-width: 990px){
+
+	body{ font-size: 14px; }
+	.grid-container{ padding-left: 40px; padding-right: 40px; }
+	.np-tablet{ padding-left: 0; padding-right: 0; }
+	.nofloat-tablet{ float: none !important; }
+
+    .widget{ margin-bottom: 30px; }
+    aside{
+        .default-sidebar, .mobile-sidebar{
+            display: flex;
+            flex-flow: row wrap;
+        }
+    }
+    aside .widget{
+        width: 50%;
+        float: left;
+        border: 0;
+        padding: 0 30px;
+        flex-grow: 1;
+        box-sizing: border-box;
+        &.widget_search{
+            background: none;
+        }
+    }
+
+    #single.fullcover .featured-image{ height: 325px; }
+
+    #header{
+        div.menu-wrapper{ padding: 0 !important; }
+        .logo{ padding: 20px !important; margin: 0 auto !important; }
+    }
+
+    .membership-page .subscribe-plan{
+        padding: 35px 25px;
+        font-size: 12px;
+        margin: 0 -10px 25px;
+    }
+
+}
+
+/* SmartPhones and small tablets */
+
+@media screen and (max-width: 767px){
+
+	$section-padding: 30px;
+	$grid-gap: 20px;
+    .force-var{ padding: $section-padding; margin: $grid-gap; }
+    [class^="grid"]{ padding-left: $grid-gap; padding-right: $grid-gap; }
+
+	/* @group Global Styles */
+
+	body{ font-size: 13px; }
+	.section{ padding-top: $section-padding; padding-bottom: $section-padding; }
+	.section.bordered{ margin: 0 -20px; padding-left: $grid-gap; padding-right: $grid-gap; }
+	.grid-container{ padding-left: 20px; padding-right: 20px; }
+	.grid-large{ }
+	.np-mobile{ padding-left: 0; padding-right: 0; }
+	.nofloat-mobile{ float: none !important; }
+    .content{ margin-top: 30px; padding: 0; }
+    div.left-content{ padding-left: 0; padding-right: 0;  }
+
+	.title{
+		font-size: 18px;
+		&.ularge{ font-size: 26px;  }
+		&.large{ font-size: 22px; }
+		&.medium{ font-size: 20px; }
+		&.small{ font-size: 14px; }
+		&.usmall{ font-size: 12px; }
+	}
+
+    .pagination{
+        div.nav{
+            a, > span{ padding: 0 15px; font-size: 13px; height: 30px; line-height: 30px; margin-bottom: 10px;}
+            > span{ height: 34px; line-height: 34px; margin: 0 5px; }
+            a span{ padding: 0; margin: 0; }
+        }
+    }
+
+	#search-results div.box{ padding: 0; }
+	div.map{ min-height: 250px; }
+	div.map div#map_canvas{ height: 250px; }
+
+    div.filters{ margin: 0; }
+    
+    input[type=email], input[type=password], input[type=tel], input[type=text], input[type=url], textarea{
+        padding: 12px 25px;
+    }
+    div.download a{ font-size: 16px; }
+
+    /* @end */
+
+    /* @group Membership */
+    
+    .subscribe-cta{
+        padding: 25px;
+    }
+
+    /* @end */
+
+	/* @group Header */
+
+    #header{
+        .logo{
+            max-width: 200px;
+            margin: 0px auto 0;
+            padding: 5px 10px !important; 
+            &.text-logo{
+                margin-top: -2px;
+                .title{ font-size: 30px; }
+            }
+        }
+        &.classic .logo, &.classic nav{ margin-top: 0; }
+        div.menu-mobile{ left: 20px; font-size: 20px; }
+        div.menu-wrapper{ padding: 15px 0 !important; }
+        nav{
+            left: 20px;
+            ul.menu li.current-menu-item  > a{
+            }
+            ul.menu li.menu-item-has-children{
+                margin-right: 0;
+                &:after{
+                    font-family: 'FontAwesome';
+                    content: '\f107';
+                    display: block;
+                    color: $text-color;
+                    position: absolute;
+                    font-size: 14px;
+                    right: 10px;
+                    top: 7px;
+                    z-index: 5;
+                }
+                &:hover{
+                    > ul.sub-menu{
+                        opacity: 1;
+                        visibility: visible;
+                        max-height: 50vh !important;
+                        padding: 5px 0;
+                        overflow: auto;
+                    }
+                }
+            }
+            ul.sub-menu{
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                max-height: 0 !important;
+                overflow: hidden;
+                box-shadow: none;
+                background: none;
+                padding: 0;
+                transform: none !important;
+                max-width: 210px;
+                margin-left: -10px;
+                margin-right: -20px;
+                li a{
+                    padding: 10px;
+                }
+                ul.sub-menu{
+                    margin-left: 5px;
+                    li a{
+                        padding-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+	/* @end */
+
+	/* @group Global: Articles List */
+
+	div.articles{
+        display: block;
+        margin: 0 20px;
+		article{
+            padding-bottom: 25px;
+            padding-left: 0;
+            padding-right: 0; 
+			min-height: inherit;
+			div.border{	display: none; }
+			div.post-excerpt{ margin-bottom: 0; }
+            a.thumb, iframe, .post-format-gallery, .post-format-gallery div.item{ min-height: 200px; height: 200px !important; }
+            div.meta a{ margin-bottom: 7px; }
+        }
+        .author-meta{ position: relative; bottom: auto; right: auto; margin-top: 20px; }
+        &.classic{
+            article{
+                padding: 25px 0;
+                .right{ padding-top: 10px; }
+                .bottom{
+                    padding: 0;
+                    .meta{ padding: 0 15px; margin-bottom: 15px; }
+                    .button{ margin-top: 20px; }
+                }
+                &.no-thumb .bottom{ margin-top: -5px; }
+            }
+			.author-meta{ margin-top: 0; }
+        }
+    }
+    
+    #author{
+        padding: 30px 20px 20px;
+        div.info{ max-width: inherit; font-size: 13px; }  
+    }
+
+    /* @end */
+
+	/* @group Single Post */
+
+	div.epcl-share-container{ margin: 0; height: auto !important; float: none; }
+	div.epcl-share{
+		margin: 20px 0;
+		float: none;
+		a{ display: inline-block; border-radius: 7px; margin: 0 1px; }
+    }
+    
+    div.left-content article{
+        padding: 20px;
+    }
+
+	#single{
+		// .featured-image{ margin: 0 (-$grid-gap) !important; height: 250px !important; }
+        .featured-image div.info{ padding: 10px 15px; }
+
+        // Fullcover style
+		&.fullcover{
+            .featured-image{
+                height: 300px;
+                margin-bottom: 0;
+                div.info{
+                    padding: $grid-gap;
+                    .title{ font-size: 22px; }
+                }
+            }
+            // div.left-content{ padding-top: 20px; }
+        }
+
+
+        // Standard style
+		&.standard{
+            .featured-image{ margin-bottom: 15px; }
+            div.meta{ 
+                // text-align: center;
+                .title{ margin-bottom: 20px; }
+            }
+            div.epcl-share{ margin: 0 0 25px; text-align: center; }
+        } 
+        .post-format-wrapper{ margin-top: 20px; }
+
+        .share-buttons{
+            .title{ display: block; margin-right: 0; }
+            .permalink input{ width: auto; }
+        }
+        div.tags.absolute{ left: 15px; top: 15px; }
+
+        section.related article{ height: 225px; }
+        // Post formats
+        .post-format-video iframe{ max-height: 250px; }
+        .post-format-gallery div.item{ height: 250px; }
+        .post-format-gallery{
+            .slick-prev{ left: 15px; }
+            .slick-next{ right: 15px; }
+        }
+        // Related Articles
+        section.related{
+            margin-top: $section-padding;
+            .prev, .next{
+                width: auto;
+                float: none;
+            }
+            .next{ margin-top: $section-padding; }
+        }
+        // Comments
+        #comments{
+            padding: 20px;
+            .title{ margin-bottom: 20px; }
+        }
+	}
+
+	/* @end */
+
+	/* @group Pages */
+
+	#page{
+		#single .featured-image{ height: 200px !important; }
+		// #single .post-content{ padding-top: $section-padding; }
+	}
+
+	/* @end */
+
+	/* @group Author and Tags page */
+
+    #archives #author{ margin: $section-padding 0 0; }
+    .tag-description{
+        font-size: 13px;
+        .title{ margin-top: $section-padding; }
+    }
+
+    /* @end */
+    
+    /* @group Author and Tags page */
+
+    #page-404 div.not-found{
+        max-width: inherit;
+        i.fa{ font-size: 80px; }
+    }
+
+    /* @end */
+
+    /* @group Author and Tags page */
+
+    #page-subscribe{
+        margin-bottom: 20px;
+        section{
+            padding: 0;
+            margin-top: 0px;
+        }
+        form{
+            padding: 25px;
+        }
+    }
+
+    /* @end */
+    
+    
+
+	/* @group Footer */
+
+	#footer{
+        margin-top: 0px;
+        .subscribe .left{ padding-left: $grid-gap !important; padding-right: $grid-gap !important; }
+        .subscribe .right{ float: none; margin-bottom: $grid-gap; text-align: center; padding-right: $grid-gap; }
+        .subscribe p{ margin-top: 5px; }
+        .widgets{ 
+            padding: $section-padding 0;
+            .widget{
+                margin-bottom: 30px;
+            }
+        }
+        // .widgets > div{ width: 100%; }
+		.widget{ margin-top: $section-padding; }
+        .widget:first-child{ margin-top: 0; }
+
+        .mobile-sidebar{     
+            .widget{
+                width: 100%;
+            }
+        }
+        .logo{
+            margin: 20px;
+        }
+
+	}
+
+	/* @end */
+
+	/* @group Text Editor */
+
+	div.text{
+        font-size: 14px;
+        h1{ font-size: 24px; }
+        h2{ font-size: 22px; }
+        h3{ font-size: 20px; }
+        h4{ font-size: 18px; }
+        h5{ font-size: 16px; }
+        h6{ font-size: 14px; }
+        blockquote{
+            padding: 15px 25px;
+        }
+        iframe{ max-width: 100%; height: 200px; }
+        pre:not([class*=language-]) {
+            padding: 10px 5px;
+            font-size: 13px;
+        }
+        code:not([class*=language-]){
+            font-size: 13px;
+        }
+		pre, code[class*="language-"], pre[class*="language-"]{
+			max-height: 300px;
+			white-space: pre;
+        }
+        table{
+            display: block;
+            overflow: auto;
+            padding: 0;
+            tbody{
+                overflow: auto;
+            }
+        }
+        // Spacing
+        iframe, figure, p{
+            margin-bottom: $editor-base-unit * 0.4;
+        }
+
+        .kg-bookmark-thumbnail{ display: none; }
+    }
+
+	/* @end */
+
+}

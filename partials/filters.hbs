@@ -1,0 +1,27 @@
+<div class="filters section">
+    <div class="grid-33 tablet-grid-40">
+        <form action="" method="get" class="search-form">
+            <input type="text" name="s" value="" class="search-field" placeholder="{{t 'Search in resources...' }}" required>
+            <button type="submit" class="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <div class="grid-50 tablet-grid-60 textright alignright hide-on-mobile">
+        {{#get "tags" limit="all" as |tags-selectbox| }}
+            <select name="tag" class="custom-select">
+                <option value="">{{t "Select Tag" }}</option>
+                {{#foreach tags-selectbox }}
+                    <option value="{{url}}">{{name}}</option>
+                {{/foreach}}
+            </select>
+        {{/get}}
+        {{#get "authors" limit="all" as |authors-selectbox| }}
+            <select name="author" class="custom-select">
+                <option value="">{{t "Select Author" }}</option>
+                {{#foreach authors-selectbox }}
+                    <option value="{{url}}">{{name}}</option>
+                {{/foreach}}
+            </select>
+        {{/get}}
+    </div>
+    <div class="clear"></div>
+</div>

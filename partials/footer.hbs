@@ -1,0 +1,104 @@
+<!-- start: #footer -->
+<footer id="footer" class="grid-container">
+
+	<div class="widgets row">
+
+        {{!-- <div class="border"></div> --}}
+
+		<!-- start: .recent-articles -->
+		<div class="widget widget-recent-articles grid-33 tablet-grid-50">
+			<h3 class="title white bordered">{{t "Latest Articles" }}</h3>
+			{{#get "posts" limit="3" as |recent-footer| }}
+				{{#foreach recent-footer visibility="all"}}
+					<article class="{{post_class}} item">
+						{{#if feature_image}}
+							<a href="{{url}}" class="thumb hover-effect grid-20 tablet-grid-20 mobile-grid-20 grid-parent">
+								<span class="fullimage cover lazy" data-src="{{img_url feature_image size="widget_thumb"}}"></span>
+							</a>
+						{{/if}}
+						<div class="gradient-effect">
+                            <time datetime="{{date format='YYYY-MM-DD'}}">{{date}}</time>
+							<h4 class="title usmall"><a href="{{url}}">{{title}}</a></h4>							
+						</div>
+						<div class="clear"></div>
+					</article>
+				{{/foreach}}
+			{{/get}}
+		</div>
+		<!-- end: .recent-articles -->
+
+		<!-- start: .widget-tag-cloud -->
+		<div class="widget widget-tag-cloud grid-33 tablet-grid-50">
+			<h3 class="widget-title title white bordered">{{t "Tag cloud" }}</h3>
+			{{#get "tags" limit="30"}}
+				{{!-- {{tags separator=""}} --}}
+                {{#foreach tags}}
+                    <a href="{{url}}" class="ctag ctag-{{slug}}" data-id="ctag-{{slug}}">{{name}}</a>
+                {{/foreach}}
+			{{/get}}
+		</div>
+		<!-- end: .widget-tag-cloud -->
+
+        <div class="clear hide-on-desktop"></div>
+
+		<!-- start: .widget-text-->
+		<div class="widget widget-about grid-33">
+            <div class="widget-content">
+                <h3 class="title white bordered">{{t "About me"}}</h3>
+                {{#get "authors" limit="1"}}
+                    {{#foreach authors}}
+                        {{#if profile_image}}
+                            <div class="avatar">                            
+                                <a href="{{url}}" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url( {{img_url profile_image size="widget_thumb"}} );"></span></a>                            
+                            </div>
+                        {{/if}}
+                        <div class="info">
+                            <h4 class="title small author-name gradient-effect no-margin"><a href="{{url}}">{{name}}</a></h4>
+                            <p class="founder">{{t "Founder & editor."}}</p>                           
+                            <div class="social">
+                                {{#if location}}
+                                    <a href="javascript:void(0)" class="location translate-effect" title="{{t 'Location' }}: {{location}}" target="_blank"><i class="fa fa-map-marker"></i></a>
+                                {{/if}}
+                                {{#if website}}
+                                    <a href="{{website}}" class="website translate-effect" title="{{t 'Website' }}: {{website}}" target="_blank"><i class="fa fa-globe"></i></a>
+                                {{/if}}
+                                {{#if twitter}}
+                                    <a href="{{twitter_url}}" class="twitter translate-effect" title="{{t 'Follow me on Twitter' }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                                {{/if}}
+                                {{#if facebook}}
+                                    <a href="{{facebook_url}}" class="facebook translate-effect" title="{{t 'Follow me on Facebook' }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <p>{{bio}}</p>
+                    {{/foreach}}
+                {{/get}}
+                {{!-- <p>I love traveling. Travel is my life, and not just the business that I do. This is part of me… part of my feelings, thoughts, my past and future, a source of new strength and inspiration.</p>
+                <p>If you like my stories, don’t forget to subscribe.</p> --}}
+            </div>
+		</div>
+		<!-- end: .widget-text -->
+
+		<div class="clear"></div>
+
+        <div class="border"></div>
+
+	</div>
+
+    {{#if @site.logo}}
+        <div class="logo" ><a href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a></div>
+    {{else}}
+        <div class="logo">
+            <a href="{{@site.url}}" class="title white no-margin">{{@site.title}}</a>
+        </div>
+    {{/if}}
+
+	<p class="published border-effect">{{t "Published with" }} <a href="https://ghost.org/" target="_blank">Ghost</a></p>
+
+    <div class="clear"></div>
+
+	<a href="javascript:void(0)" id="back-to-top" class="button dark"><i class="fa fa-chevron-up"></i></a>
+
+</footer>
+<!-- end: #footer -->

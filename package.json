@@ -1,0 +1,55 @@
+{
+	"name": "Paw Stories Club",
+	"version": "0.0.1",
+	"demo": "http://members.pawstories.nyc,
+    "engines": {
+        "ghost": ">=3.0.0",
+        "ghost-api": "v3"
+    },
+	"author": {
+		"name": "Paw Stories",
+        "email": "pawstories@breakbox.tv",
+        "url": "https://members.pawstories.nyc"
+	},
+	"gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine"
+        ]
+    },
+	"config": {
+        "posts_per_page": 6,
+        "image_sizes": {
+            "avatar_thumb": {
+                "width": 70,
+                "height": 70
+            },
+            "widget_thumb": {
+                "width": 160,
+                "height": 160
+            },
+            "loop": {
+                "width": 700,
+                "height": 500
+            },
+            "single_standard": {
+                "width": 760,
+                "height": 400
+            },
+            "single_fullcover": {
+                "width": 1500,
+                "height": 500
+            },
+            "single_related": {
+                "width": 600,
+                "height": 450
+            }
+        }
+    },
+    "keywords": [
+        "dog",
+        "rescue",
+        "dog training"
+    ]
+}

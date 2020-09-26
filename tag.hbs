@@ -1,0 +1,45 @@
+{{!< default}}
+
+<main id="archives" class="main grid-container" data-aos="fade-up">
+
+    <div class="row">
+
+        {{#tag}}
+            <div class="grid-container section">
+                <div class="tag-description section textcenter cover {{#if feature_image}}background{{/if}}" {{#if feature_image}}style="background: url('{{feature_image}}');"{{/if}}>
+                    <div class="grid-container grid-small">
+                        <h1 class="title large white fw-bold {{^if description}}no-margin{{/if}}">{{name}}</h1>
+                        {{#if description}}
+                            <p>{{description}}</p>
+                        {{/if}}
+                        <span class="icon"><svg><use xlink:href="#tag"></use></svg></span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+        {{/tag}}	
+
+        <div class="content-wrapper">
+                
+            <!-- start: .articles -->
+            <div class="articles">
+                        
+                {{#foreach posts visibility="all"}}
+                    {{#has tag="bgstyle"}}
+                        {{> loop/bg-article}}
+                    {{else}}
+                        {{> loop/default-article}}
+                    {{/has}}                    
+                {{/foreach}}
+                
+            </div>
+            <!-- end: .articles -->
+            
+            {{pagination}}
+        
+        </div>
+
+    </div>
+
+</main>

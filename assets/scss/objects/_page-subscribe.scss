@@ -1,0 +1,39 @@
+/* @group Page */
+
+#page-subscribe{
+    // .title{ display: inline-block; }
+    .title.bordered:after{
+        background: rgba(#fff, 0.25);
+        // display: none;
+    }
+    header nav a{
+        color: #fff;
+        i.fa{
+            font-size: 16px;
+            margin-right: 3px;
+        }
+    }
+    section{
+        // background: rgba(#000, 0.15);
+        border-radius: $border-radius-sections;
+        padding: $section-padding;
+        margin-top: $section-padding;
+        color: #fff;
+        header{
+            h1.title{ margin-bottom: 20px; }
+            p{ opacity: 0.75; font-weight: 500; }
+        }
+    }
+    form{
+        margin-top: 30px;
+        background: rgba(#000, 0.15);
+        padding: $section-padding;
+        border-radius: $border-radius-sections;
+    }
+    .main-error{
+        color: #fff;
+        margin-top: 20px;
+    }
+}
+
+/* @end */

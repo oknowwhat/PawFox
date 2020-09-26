@@ -1,0 +1,29 @@
+{{!< default}}
+
+<main id="home" class="main grid-container">
+    
+    <div class="row">
+        
+        <div class="content-wrapper content" data-aos="fade-up">
+                
+            <!-- start: .articles -->
+            <div class="articles">
+                        
+                {{#foreach posts visibility="all"}}
+                    {{#has tag="bgstyle"}}
+                        {{> loop/bg-article}}
+                    {{else}}
+                        {{> loop/default-article}}
+                    {{/has}}                    
+                {{/foreach}}
+                
+            </div>
+            <!-- end: .articles -->
+            
+            {{pagination}}
+        
+        </div>
+
+    </div>
+
+</main>

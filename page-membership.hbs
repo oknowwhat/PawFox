@@ -1,0 +1,46 @@
+{{!< default}}
+
+{{#post}}
+
+<!-- start: #page -->
+<main id="page" class="main grid-container">
+	
+    <!-- start: .center -->
+    <div id="single" class="membership-page center content fullcover no-sidebar" data-aos="fade">
+
+        <div class="content">
+        
+            <!-- start: .left-content -->
+            <div class="left-content np-mobile" style="padding-right: 0;">
+                <article class="{{post_class}}">
+                
+                    <section class="post-content">
+                        {{!-- {{^if feature_image }}
+                            <h1 class="title ularge bold">{{title}}</h1>
+                        {{/if}} --}}
+
+                        <div class="row">
+                            {{> membership-plans}}
+
+                            <div class="clear"></div>
+                            <p class="account textcenter">{{t "Already have an account?"}} <a href="{{@site.url}}/signin" class="button green">{{t "Sign In"}}</a></p>    
+                        </div>
+
+                        <div class="clear"></div>
+                    </section>
+                    
+                </article>
+            </div>
+            <!-- end: .content -->
+            
+            <div class="clear"></div>
+
+        </div>
+    
+    </div>
+    <!-- end: .center -->
+    
+</main>
+<!-- end: #page -->
+
+{{/post}}

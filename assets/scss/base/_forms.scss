@@ -1,0 +1,103 @@
+/* @group Forms */
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea{
+	display: block;
+    background: $border-color;;
+    border: 2px solid $border-color;
+    color: $light-gray;
+    font: $font-size $title-font-family;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+	padding: 12px 30px;
+	height: 45px;
+	width: 100%;
+	margin-bottom: 15px;
+    box-sizing: border-box;
+    border-radius: $border-radius;
+	@include transition;
+	@include placeholder{
+		color: $light-gray;
+	};
+	&:focus{ border-color: darken($border-color, 5%) }
+}
+textarea{ width: 100%; height: 170px; resize: none; padding-top: 25px; padding-bottom: 25px; }
+input[type="submit"]{
+	@include button;
+	font-size: 18px;
+	padding: 10px 30px;
+	@include transition;
+}
+input[type="submit"]:hover{
+    background-color: transparent !important;
+}
+select{ 
+    max-width: 100%;
+}
+select.custom-select, .wp-block-categories select{
+    border: 0;
+	border-radius: 5px;
+	padding: 10px 15px;
+	padding-right: 25px;
+	background: $red url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUBAMAAABohZD3AAAAA3NCSVQICAjb4U/gAAAAD1BMVEX///8AAAAAAAAAAAAAAABRO2rwAAAABXRSTlMAESIzRJTdRHwAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAY0lEQVQYlVXOyRGAIBBE0QYNgIMBWJYBcDAAFvOPSYRZ5zL1Tv3xvPY6dueC4JyA27AB2IzzMIx/4hDW6Sg+p8EJfVESCpkTEpkSGpMSshg6DkmoxlHHOaFbjoTiHHR83UX/A5M3KIMZPyPWAAAAAElFTkSuQmCC') no-repeat 93% center;
+	background-size: 9px 6px;
+	color: #fff;
+	font: $font-size $font-family;
+	outline: 0;
+	cursor: pointer;
+	margin-left: 20px;
+    appearance: none;
+    option{
+        color: #222;
+        background: #fff;
+    }
+}
+select.custom-select{ display: none; }
+.ie9 select.custom-select{ background: none; display: block; }
+select.custom-select::-ms-expand{ display: none; }
+select.custom-select:first-child{ margin-left: 0; }
+// select.custom-select option{ color: $black1; }
+button{
+	@include transition;
+}
+form p{ padding-bottom: 15px; font-size: 13px; }
+
+.empty{ border: 1px solid #F15F74 !important; }
+@include placeholder{
+	color: rgba(#fff, 0.75);
+};
+
+// Search Form
+
+form.search-form{
+    position: relative;
+    z-index: 1;
+    max-width: none !important;
+    input{ margin: 0; }
+    input.search-field{
+        background: $green;
+        border: 0;
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        @include placeholder{
+            color: #fff;
+        };
+	 }
+    .submit{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        color: #fff;
+        background: none;
+        backface-visibility: hidden;
+        margin-top: -13px;
+    }
+    .submit:hover{ opacity: .75; }
+}
+
+/* @end */

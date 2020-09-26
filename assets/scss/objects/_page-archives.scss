@@ -1,0 +1,57 @@
+/* @group Author and Tags page */
+
+.tag-description{
+    color: #fff;
+    // background-color: rgba(#000, 0.15);
+    // text-shadow: 0px 1px 0px rgba(#000, 0.35);
+    border-radius: $border-radius-sections;
+    box-shadow: 0 3px 12px -1px rgba(7,10,25,0.05), 0 22px 27px -20px rgba(7,10,25,0.05);
+    position: relative;
+    z-index: 1;
+    // overflow: hidden;
+    font-size: $font-size-editor;
+    padding: 60px 0;
+    margin-top: 30px;
+    .title{
+        margin-top: 5px;
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+    .overlay{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: rgba(#000, 0.15);
+        border-radius: $border-radius-sections;
+        // opacity: 0.25;
+        // background: linear-gradient(to bottom, rgba(#000,0) 0%, rgba(#000,0.15) 100%);
+    }
+    .icon{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        z-index: 2;
+        width: 80px;
+        height: 80px;
+        margin: -44px 0 0 -44px;
+        border: 4px solid $green;
+        background: $green;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 40px;
+        line-height: 100px;
+        // box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 3px 12px -1px rgba(7, 10, 25, 0.05), 0 22px 27px -20px rgba(7, 10, 25, 0.05);
+        svg{
+            fill: #fff;
+            width: 50px;
+            height: 50px;
+        }
+
+    }
+}
+
+/* @end */

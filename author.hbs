@@ -1,0 +1,67 @@
+{{!< default}}
+
+<main id="archives" class="main grid-container">
+
+    <div class="row">
+
+        <!-- start: .content-wrapper -->
+        <div class="content-wrapper" data-aos="fade-up">
+        
+            {{#author}}
+                <div class="grid-container section">
+                    <!-- start: .author -->
+                    <section id="author" class="author {{#if profile_image}} with-avatar{{else}} no-avatar{{/if}}">
+                        <!--<h3 class="title bordered">About the Author</h3>-->
+                        <div class="avatar">
+                            {{#if profile_image}}
+                                <a href="{{url}}" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url( {{profile_image}} );"></span></a>
+                            {{/if}}
+                        </div>
+                        <div class="info">
+                            <h4 class="title author-name gradient-effect"><a href="{{url}}">{{name}}</a></h4>
+                            <p>{{bio}}</p>
+                            <div class="social">
+                                {{#if location}}
+                                    <a href="javascript:void(0)" class="location tooltip" title="{{ t 'Location' }}: {{location}}" target="_blank"><i class="fa fa-map-marker"></i></a>
+                                {{/if}}
+                                {{#if website}}
+                                    <a href="{{website}}" class="website tooltip" title="{{ t 'Website' }}: {{website}}" target="_blank"><i class="fa fa-globe"></i></a>
+                                {{/if}}
+                                {{#if twitter}}
+                                    <a href="{{twitter_url}}" class="twitter tooltip" title="{{ t 'Follow me on Twitter' }} " target="_blank"><i class="fa fa-twitter"></i></a>
+                                {{/if}}
+                                {{#if facebook}}
+                                    <a href="{{facebook_url}}" class="facebook tooltip" title="{{ t 'Follow me on Facebook' }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+                    <!-- end: .author -->
+                </div>
+            {{/author}}
+            
+            <div class="clear"></div>
+                
+            <!-- start: .articles -->
+            <div class="articles">
+                        
+                {{#foreach posts visibility="all"}}
+                    {{#has tag="bgstyle"}}
+                        {{> loop/bg-article}}
+                    {{else}}
+                        {{> loop/default-article}}
+                    {{/has}}                    
+                {{/foreach}}
+                
+            </div>
+            <!-- end: .articles -->
+            
+            {{pagination}}
+        
+        </div>
+        <!-- end: .content-wrapper -->
+
+    </div>
+
+</main>

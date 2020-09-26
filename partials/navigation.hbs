@@ -1,0 +1,21 @@
+<ul id="menu-header" class="menu gradient-effect">
+	{{#foreach navigation}}
+		<li class="nav-{{slug}}{{#if current}} current-menu-item{{/if}}"><a href="{{url absolute="true"}}">{{label}}</a></li>
+	{{/foreach}}
+    <li class="hide-on-mobile hide-on-tablet"><a href="#search-lightbox" class="lightbox mfp-inline"><i class="fa fa-search"></i></a></li>
+   
+    
+    {{#if @labs.members}}
+        {{#if @member}}
+            {{#if @member.subscriptions}}
+                <li class="nav-account"><a href="{{@site.url}}/account">{{t "My Account"}}</a></li>
+            {{/if}}
+            <li class="nav-logout hide-on-desktop"><a data-members-signout>{{t "Sign Out"}}</a></li>
+        {{else}}
+            <li class="nav-login"><a href="{{@site.url}}/signin" class="login">{{t "Sign In"}}</a></li>      
+            <li class="nav-subscribe hide-on-desktop"><a href="{{@site.url}}/subscribe" class="login">{{t "Subscribe"}}</a></li>  
+        {{/if}}
+
+    {{/if}}
+</ul>
+

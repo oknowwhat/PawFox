@@ -1,0 +1,136 @@
+<!-- start: #sidebar -->
+<aside id="sidebar" role="complementary" class="grid-30 tablet-grid-30 hide-on-tablet hide-on-mobile">
+
+    {{#is "post"}}
+        {{#get "posts" filter="primary_tag:{{primary_tag.slug}}" limit="5" as |related-sidebar| }}
+            <!-- start: .widget-recent-articles -->
+            <div class="widget widget-recent-articles">
+                <h4 class="title bordered">{{t "Related Articles" }}</h4>      
+                {{#foreach related-sidebar visibility="all"}}
+                    <article class="{{post_class}} item">
+                        {{#if feature_image}}
+                            <a href="{{url}}" class="thumb hover-effect grid-33 grid-parent">
+                                <span class="fullimage cover lazy" data-src="{{img_url feature_image size="widget_thumb"}}"></span>
+                            </a>
+                        {{/if}}
+                        <div class="info">
+                            <div class="meta">
+                                <time datetime="{{date format='YYYY-MM-DD'}}">{{date}}</time>
+                            </div>
+                            <h4 class="title usmall gradient-effect"><a href="{{url}}">{{title}}</a></h4>
+                            
+                        </div>
+                        <div class="clear"></div>
+                    </article>	
+                {{/foreach}}
+            </div>
+            <!-- end: .widget-recent-articles -->
+        {{/get}}
+    
+    {{/is}}
+
+    {{^is "post"}}  
+        <!-- start: .widget-recent-articles -->
+        <div class="widget widget-recent-articles">
+            <h4 class="title bordered">{{t "Latest Articles" }}</h4>
+            {{#get "posts" limit="5" as |recent-sidebar| }}
+                {{#foreach recent-sidebar visibility="all"}}
+                    <article class="{{post_class}} item">
+                        {{#if feature_image}}
+                            <a href="{{url}}" class="thumb hover-effect grid-33 grid-parent">
+                                <span class="fullimage cover lazy" data-src="{{img_url feature_image size="widget_thumb"}}"></span>
+                            </a>
+                        {{/if}}
+                        <div class="info">
+                            <div class="meta">
+                                <time datetime="{{date format='YYYY-MM-DD'}}">{{date}}</time>
+                            </div>
+                            <h4 class="title usmall gradient-effect"><a href="{{url}}">{{title}}</a></h4>
+                            
+                        </div>
+                        <div class="clear"></div>
+                    </article>	
+                {{/foreach}}
+            {{/get}}
+        </div>
+        <!-- end: .widget-recent-articles -->
+    {{/is}}
+
+    <!-- start: .tag-cloud -->
+    <section class="widget widget-categories">
+        <h3 class="title bordered">{{t "Categories" }}</h3>
+        {{#get "tags" limit = "30" include="count.posts" order="count.posts DESC" }}
+            <ul>
+            {{#foreach tags}}
+                <li class="tag-{{slug}}">
+                    <a href="{{url}}" title="{{name}}" class="tag tag-{{id}} {{slug}}">{{name}}</a>
+                    <span>{{count.posts}}</span>
+                </li>  
+            {{/foreach}}
+            </ul>
+        {{/get}}
+        <div class="clear"></div>
+    </section>
+    <!-- end: .tag-cloud  -->
+
+    <!-- start: .widget -->
+	<section class="widget">
+		<h4 class="widget-title title bordered">{{t "Advertising" }}</h4> 
+		<div class="textwidget textcenter">
+			<a href="http://themeforest.net/user/estudiopatagon/portfolio?ref=EstudioPatagon" class="ads" target="_blank"><img src="{{asset "images/custom-banner.png"}}"></a>
+		</div>
+		
+		<div class="clear"></div>
+	</section>
+	<!-- end: .widget -->
+
+    {{!-- <!-- start: .widget -->
+	<section class="widget widget-text">
+        <h4 class="widget-title title bordered">Text Widget</h4>
+		<div class="textwidget">
+			<p>Text widget content...</p>
+            <p>Text widget content...</p>
+		</div>
+		<div class="clear"></div>
+	</section>
+	<!-- end: .widget -->    --}}
+
+    {{!-- <!-- start: .widget-tag-cloud -->
+    <div class="widget widget-tag-cloud">
+        <h4 class="widget-title title bordered">{{t "Tag cloud" }}</h4>
+        {{#get "tags" limit="30"}}
+            {{#foreach tags}}
+                <a href="{{url}}" class="ctag ctag-{{slug}}" data-id="ctag-{{slug}}">{{name}}</a>
+            {{/foreach}}
+        {{/get}}
+    </div>
+    <!-- end: .widget-tag-cloud  --> --}}
+
+    {{!-- Uncomment to enable facebook or twitter widgets --}}
+    {{!-- <!-- start: .widget -->
+	<section class="widget">
+		<h4 class="widget-title title bordered">Facebook</h4>
+		<div class="fb-page" data-href="https://www.facebook.com/ghost" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"></div></div>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		<div class="clear"></div>
+	</section>
+	<!-- end: .widget --> --}}
+	
+	{{!-- <!-- start: .widget -->
+	<section class="widget">
+		<h4 class="widget-title title bordered">Twitter</h4>
+        <a class="twitter-timeline" href="https://twitter.com/WordPress" data-height="400" data-widget-id="644274778728177664">Tweets by @WordPress.</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		<div class="clear"></div>
+	</section>
+	<!-- end: .widget --> --}}
+	
+</aside>
+<!-- end: #sidebar -->

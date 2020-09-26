@@ -1,0 +1,73 @@
+<!-- start: #header -->
+<header id="header" class="grid-container">
+
+	<div class="menu-mobile">
+		<i class="fa fa-bars"></i>
+	</div>
+
+	<!-- start: .menu-wrapper -->
+	<div class="menu-wrapper">
+	
+		<div class="">
+		
+			{{#if @site.logo}}
+				<div class="logo" ><a href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a></div>
+			{{else}}
+				<div class="logo text-logo">
+					<a href="{{@site.url}}" class="title large white no-margin">{{@site.title}}</a>
+				</div>
+			{{/if}}
+
+            {{!-- <div class="share-buttons hide-on-tablet hide-on-mobile hide-on-desktop-sm">
+                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+            </div> --}}
+
+            {{#if @labs.members}}
+                {{#if @member}}
+                    <a class="subscribe button red hide-on-tablet hide-on-mobile" data-members-signout>{{t "Sign Out"}} <i class="fa fa-sign-out"></i></a>
+                {{else}}
+                    <a href="{{@site.url}}/subscribe" class="subscribe button red hide-on-tablet hide-on-mobile">{{t "Subscribe"}} <i class="fa fa-paper-plane"></i></a>
+                {{/if}}
+            {{/if}}
+			
+			<!-- start: .main-nav -->
+			<nav class="main-nav grid-container grid-parent">
+				
+				{{navigation}}
+				
+			</nav>
+			<!-- end: .main-nav -->
+
+            <div class="clear"></div>
+
+            <div class="border hide-on-tablet hide-on-mobile"></div>
+		
+		</div>		
+        
+		<div class="clear"></div>
+		
+	</div>
+	<!-- end: .menu-wrapper -->
+	
+	<div class="clear"></div>
+
+</header>
+<!-- end: #header -->
+
+
+<div id="form-lang" data-results-title="{{t 'Results for your search'}}"></div>
+
+<div class="hide-on-desktop hide-on-tablet hide-on-mobile">
+    <div id="search-lightbox" class="mfp-hide grid-container grid-small grid-parent">
+        <h4 class="title small white textcenter fw-normal hide-on-mobile hide-on-tablet">{{{t "Press {key} to close" key="<span>ESC</span>"}}}</h4>
+        <div class="search-wrapper section">                
+            <form action="{{@site.url}}" method="get" class="search-form">
+                <input type="text" name="s" id="s" value="" class="search-field" placeholder="{{t "Type to start your seach..."}}" required>
+                <button type="submit" class="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div id="search-results" class="grid-container section"></div>
+    </div>
+</div>

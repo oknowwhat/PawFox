@@ -1,0 +1,118 @@
+@mixin button{
+    display: inline-block;
+	background-color: $green;
+	color: #fff;
+	font-size: 15px;
+	padding: 5px 25px;
+	border: 2px solid transparent;
+	letter-spacing: 0.5px;
+	font-weight: 600;
+    font-family: $title-font-family;
+    border-radius: $border-radius;
+    @include transition;
+	&:hover{
+		// border-color: $green;
+		// color: $green;
+        // background-color: transparent;
+        color: #fff;
+        background-color: $text-color;
+    }
+    &.small{ font-size: 12px; padding: 5px 15px; }
+    &.large{ font-size: 22px; padding: 8px 25px; font-weight: bold; border-radius: 32px; }
+    &.circle{
+        padding: 7px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 30px;
+        font-size: 16px;
+        i.fa{ margin: 0; vertical-align: middle; }
+    }
+	&.outline{
+		background-color: transparent;
+		box-shadow: none;
+		border: 2px solid $green;
+		color: $green;
+	}
+	&.outline:hover{
+		color: #fff;
+		background-color: $green;
+    }
+    // By color
+    &.red{
+        background-color: $red;
+        &:hover{
+            // box-shadow: 0 3px 12px -1px rgba(7, 10, 25, 0.05), 0 22px 27px -20px rgba(7, 10, 25, 0.05);
+            transform: translateY(-2px);
+        }
+    }
+	&.dark{
+		background-color: $text-color;
+	}
+	&.dark:hover{
+		color: #fff;
+		background-color: $light-gray;
+	}
+    & i.fa{ font-size: 85%; margin-left: 5px; }
+    &.loading:after{
+        margin-left: 7px;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        top: -2px;
+        position: relative;
+        height: 12px;
+        width: 12px;
+        border: 2px solid #fff;
+        border-radius: 100%;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        animation: spin .5s infinite linear;
+    }
+
+}
+
+.button{
+    @include button;
+}
+
+/* Global Tags */
+
+div.tags{
+	display: block;
+	&.absolute{
+		position: absolute;
+		right: 0;
+        top: -15px;
+        width: 100%;
+        z-index: 10;
+        text-align: center;
+    }
+    &.no-thumb{ margin-bottom: half($element-padding); margin-left: -5px; }
+	a, span{
+		font-size: 15px;
+		color: #fff;		
+		display: inline-block;
+		padding: 4px 25px;
+		vertical-align: top;
+        border-radius: 3px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        border-radius: $border-radius;
+        font-family: $title-font-family;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+	}
+	a:hover{
+		transform: translateY(-2px);
+	}
+}
+.ctag{
+    background-color: $red;
+}
+
+a[href*="nosidebar"], span.nosidebar,
+a[href*="fullcover"], span.fullcover{ display: none !important; }
+
+/* @end */

@@ -1,0 +1,162 @@
+/* @group Header */
+
+#header{
+	div.menu-mobile{ display: none; }
+    div.menu-wrapper{ 
+        padding: 50px 0px 0;
+        border-radius: 15px;
+    }
+	.logo {
+		// max-width: 375px;
+		text-align: center;
+		margin: 5px auto;
+        float: left;
+		a {
+			display: block;
+			// font-size: 28px;
+			// line-height: 40px;
+			color: #fff;
+			i.fa{
+				margin-right: 10px;
+				vertical-align: middle;
+				position: relative;
+				top: -3px;
+			}
+			img {
+				display: block;
+				max-width: 100%;
+                height: auto;
+                margin: 0 auto;
+			}
+        }
+        &.text-logo{
+            margin-top: 12px;
+        }
+    }
+
+    // Main Navigation
+	nav{
+		position: relative;
+		z-index: 100;
+		text-align: right;
+        float: right;
+        margin-top: 5px;
+		ul.menu{ font-size: 0px; }
+		ul.menu li{
+			display: inline-block;
+			padding: 20px 15px 20px;
+            position: relative;
+		}
+		ul.menu li a{
+			display: inline-block;
+            font-family: $title-font-family;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.45;
+            letter-spacing: 0.5px;
+			position: relative;
+			z-index: 1;
+            color: #fff;
+            &.lightbox{
+                background: none;
+                &:hover{
+                    transform: translateY(-2px);
+                }
+            }
+		}
+		ul.menu li a:hover,
+		ul.menu li.current-menu-item > a, ul.menu li.current-menu-ancestor > a{
+            // color: $green;
+            // text-shadow: 0px 1px 0px #fff;
+            // text-shadow: 2px 3px 0px #898999;
+            background-size: 100% 4px;
+            // background-image: linear-gradient(to right, rgba($red, 1) 0%, rgba($red, 1) 100%);
+            &:after{
+                opacity: 1;
+                width: 100%;
+            }
+		}
+		ul.sub-menu{
+			position: absolute;
+			left: 0;
+			top: 100%;
+			z-index: 100;
+			padding: 15px 0;
+            background: #fff;
+            border-radius: 7px;
+			min-width: 250px;
+			text-align: left;
+			left: -10px;
+			opacity: 0;
+            visibility: hidden;
+            box-shadow: 0px 5px 15px 0px rgba(#000, 0.15);
+            transform: translateY(-15px);
+            @include transition(500ms);
+            li{ display: block; padding: 0; }
+			li a{
+                display: block;
+                font-family: $font-family;
+                font-size: 14px;
+                font-weight: 500;
+                color: $text-color;
+                padding: 10px 25px;
+                &:hover{
+                    color: $text-color;
+                    background: #f6f6f6;
+                }
+			}
+			ul.sub-menu{
+				left: 100%;
+                top: -15px;
+                transform: scale(1) translateX(-10px);
+			}
+		}
+		ul.menu li:hover > ul.sub-menu{
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1) translateY(0px);
+		}
+    }
+    .subscribe.button{
+        float: right;
+        margin: 16px 0 0 25px;
+        font-size: 15px;
+        .fa{
+            font-size: 16px;
+            margin-left: 3px;
+            margin-top: -1px;
+            margin-right: 0;
+        }
+    }
+    .share-buttons{
+        float: right;
+        background: rgba(#000, 0.15);
+        padding: 5px 25px;
+        border-radius: 25px;
+        font-size: 20px;
+        margin: 15px 0 0 15px;
+        position: relative;
+        z-index: 101;
+        a{
+            display: inline-block;
+            color: #fff;
+            margin: 0 7px;
+            position: relative;
+            z-index: 2;
+            &:hover{ transform: translateY(-2px); }
+        }
+    }
+
+    div.border{
+        border-bottom: 2px solid rgba(#fff, 0.25);
+        margin-top: 40px;
+    }
+
+}
+
+@keyframes headerPinnedSlideDown{
+	0% {top:-100%;}
+	100%{top:0;}
+}
+
+/* @end */
